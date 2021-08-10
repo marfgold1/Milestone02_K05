@@ -1,5 +1,6 @@
+import { useState } from 'react'
 import { makeStyles } from '@material-ui/core/styles';
-import { AppBar, Button, Toolbar, Typography } from '@material-ui/core';
+import { AppBar, Button, Drawer, Hidden, List, ListItem, ListItemText, Toolbar, Typography } from '@material-ui/core';
 
 const links = [
   { label: 'Tentang' },
@@ -14,8 +15,31 @@ const useStyles = makeStyles((theme) => ({
   },
 }))
 
+function NavDrawer() {
+  const [anchorEl, setAnchorEl] = useState(null);
+  const handleClick = (event) => {
+    setAnchorEl(event.currentTarget)
+  }
+  const handleClose = () => {
+    setAnchorEl(null)
+  }
+
+  return (
+    <>
+      <Button onClick={handleClick}>Burger</Button>
+      <Drawer anchor="top" anchorEl={anchorEl} open={Boolean(anchorEl)} onClose={handleClose}>
+        <List>
+          {links.map((link) => (
+            <ListItem><ListItemText primary={link.label} /></ListItem>
+          ))}
+        </List>
+      </Drawer>
+    </>
+  )
+}
+
 function Navbar() {
-  const navlinks = links.map((link) => (
+  const navRow = links.map((link) => (
     <Button color="inherit">{link.label}</Button>
   ))
 
@@ -27,7 +51,10 @@ function Navbar() {
         <Typography variant="h6" className={classes.title}>
           Ayo Vaksin
         </Typography>
-        {navlinks}
+        <Hidden smDown>{navRow}</Hidden>
+        <Hidden mdUp>
+          <NavDrawer></NavDrawer>
+        </Hidden>
       </Toolbar>
     </AppBar>
   )
