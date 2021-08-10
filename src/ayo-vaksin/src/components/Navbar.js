@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { makeStyles } from '@material-ui/core/styles';
-import { AppBar, Button, Drawer, Hidden, List, ListItem, ListItemText, Toolbar, Typography } from '@material-ui/core';
+import { AppBar, Button, Drawer, Hidden, IconButton, List, ListItem, ListItemText, Toolbar, Typography } from '@material-ui/core';
+import MenuIcon from '@material-ui/icons/Menu'
 
 const links = [
   { label: 'Tentang' },
@@ -26,7 +27,9 @@ function NavDrawer() {
 
   return (
     <>
-      <Button onClick={handleClick}>Burger</Button>
+      <IconButton onClick={handleClick}>
+        <MenuIcon />
+      </IconButton>
       <Drawer anchor="top" anchorEl={anchorEl} open={Boolean(anchorEl)} onClose={handleClose}>
         <List>
           {links.map((link) => (
