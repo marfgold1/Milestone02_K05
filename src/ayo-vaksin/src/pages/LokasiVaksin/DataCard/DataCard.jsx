@@ -4,13 +4,17 @@ import { IconButton, makeStyles, Typography } from '@material-ui/core'
 
 import MapOutlinedIcon from '@material-ui/icons/MapOutlined';
 
-const useStyles = makeStyles({
+const useStyles = makeStyles(theme => ({
   dataCard: {
     backgroundColor: '#14274D',
     height: '10.5em',
     width: '33em',
     borderRadius: '10px',
     padding: '1.5em 2.3em',
+    [theme.breakpoints.down('sm')]: {
+      width: '23em',
+      padding: '1.5em 1em'
+    }
   },
   cardWrap: {
     display: 'flex',
@@ -26,12 +30,18 @@ const useStyles = makeStyles({
   contentHead: {
     color: '#FFFFFF',
     fontSize: '20px',
-    fontFamily: 'Nunito'
+    fontFamily: 'Nunito',
+    [theme.breakpoints.down('sm')]: {
+      fontSize: '18px'
+    }
   },
   content: {
     color: '#FFFFFF',
     fontSize: '16px',
-    fontFamily: 'Nunito'
+    fontFamily: 'Nunito',
+    [theme.breakpoints.down('sm')]: {
+      fontSize: '15px'
+    }
   },
   right: {
     display: 'flex',
@@ -46,8 +56,11 @@ const useStyles = makeStyles({
     color: '#FFFFFF',
     fontSize: '45px',
     cursor: 'pointer',
+    [theme.breakpoints.down('sm')]: {
+      fontSize: '40px'
+    }
   }
-})
+}))
 
 export const DataCard = (props) => {
   const classes = useStyles();

@@ -4,41 +4,73 @@ import { makeStyles, Typography } from '@material-ui/core'
 import imageSamplePeta from '../../images/samplePeta.png'
 import { DataCard } from './DataCard/DataCard'
 
-const useStyles = makeStyles({
+const useStyles = makeStyles(theme => ({
   lokasiVaksin: {
     backgroundColor: '#222232',
     height: '100%',
     width: '100%',
-    padding: '7em 7em',
+    padding: '7em',
+    [theme.breakpoints.down('sm')]: {
+      padding: '3em 1em'
+    }
   },
   title: {
     color: '#FFFFFF',
     textAlign: 'center',
-    fontFamily: 'Nunito'
+    fontFamily: 'Nunito',
+    fontWeight: '600',
+    [theme.breakpoints.down('sm')]: {
+      fontSize: '3em'
+    }
   },
   subBody: {
     color: '#FFFFFF',
     textAlign: 'center',
     paddingBlock: '1em',
     paddingBottom: '2em',
-    fontFamily: 'Nunito'
+    fontFamily: 'Nunito',
+    [theme.breakpoints.down('sm')]: {
+      fontSize: '1em',
+      paddingTop: '.5em'
+    }
   },
   image: {
-    width: '45em'
+    width: '45em',
+    [theme.breakpoints.down('sm')]: {
+      width: '85%',
+      height: '30em',
+    }
+  },
+  left: {
+    [theme.breakpoints.down('sm')]: {
+      display: 'flex',
+      justifyContent: 'center'
+    }
   },
   contentWrapper: {
     display: 'flex',
-    gap: '40px'
+    gap: '40px',
+    [theme.breakpoints.down('sm')]: {
+      flexDirection: 'column',
+      gap: '25px'
+    }
   },
   right: {
     height: '35.2em',
     overflow: 'auto',
     display: 'grid',
     gridTemplateColumns: 'auto',
-    gap: '15px',
-    paddingRight: '10px'
+    gap: '13px',
+    paddingRight: '10px',
+    [theme.breakpoints.down('sm')]: {
+      padding: '0',
+      justifyContent: 'center',
+      '&::-webkit-scrollbar': {
+        display: 'none'
+      }
+    }
   }
-})
+}))
 
 const dataLokasiVaksin = [
   {
