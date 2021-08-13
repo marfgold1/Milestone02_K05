@@ -1,8 +1,9 @@
 import React from 'react'
 import { makeStyles, Typography } from '@material-ui/core'
 
-import imageSamplePeta from '../../images/samplePeta.png'
 import { DataCard } from './DataCard/DataCard'
+
+import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet'
 
 const useStyles = makeStyles(theme => ({
   lokasiVaksin: {
@@ -34,11 +35,12 @@ const useStyles = makeStyles(theme => ({
       paddingTop: '.5em'
     }
   },
-  image: {
-    width: '45em',
+  mapContent: {
+    width: '53em',
+    height: '42em',
     [theme.breakpoints.down('sm')]: {
       width: '85%',
-      height: '30em',
+      height: '40em',
     }
   },
   left: {
@@ -56,12 +58,13 @@ const useStyles = makeStyles(theme => ({
     }
   },
   right: {
-    height: '35.2em',
+    height: '36em',
     overflow: 'auto',
     display: 'grid',
     gridTemplateColumns: 'auto',
     gap: '13px',
-    paddingRight: '10px',
+    paddingRight: '20px',
+    overflowX: 'hidden',
     [theme.breakpoints.down('sm')]: {
       padding: '0',
       justifyContent: 'center',
@@ -101,13 +104,26 @@ const dataLokasiVaksin = [
 
 export const LokasiVaksin = () => {
   const classes = useStyles();
+
+  const position = [51.505, -0.09]
+
   return (
     <div className={classes.lokasiVaksin}>
       <Typography variant='h3' className={classes.title}>Lokasi Vaksin</Typography>
       <Typography className={classes.subBody}>Lihat lokasi vaksin terdekat dari Anda disini</Typography>
       <div className={classes.contentWrapper}>
         <div className={classes.left}>
-          <img src={imageSamplePeta} alt='Peta lokasi vaksin' className={classes.image}></img>
+          <MapContainer center={position} zoom={13} scrollWheelZoom={false} className={classes.mapContent}>
+            <TileLayer
+              attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+              url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+            />
+            <Marker position={position}>
+              <Popup>
+                Hello guys
+              </Popup>
+            </Marker>
+          </MapContainer>
         </div>
         <div className={classes.right}>
           {dataLokasiVaksin.map((data) => (
