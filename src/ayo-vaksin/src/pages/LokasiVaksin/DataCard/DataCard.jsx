@@ -7,10 +7,10 @@ import MapOutlinedIcon from '@material-ui/icons/MapOutlined';
 const useStyles = makeStyles(theme => ({
   dataCard: {
     backgroundColor: '#14274D',
-    height: '10.5em',
+    height: '100%',
     width: '33em',
     borderRadius: '10px',
-    padding: '1.5em 2.3em',
+    padding: '1.5em 2em',
     [theme.breakpoints.down('sm')]: {
       width: '23em',
       padding: '1.5em 1em'
@@ -19,13 +19,13 @@ const useStyles = makeStyles(theme => ({
   cardWrap: {
     display: 'flex',
     height: '100%',
-    justifyContent: 'space-between'
+    justifyContent: 'space-between',
   },
   left: {
     display: 'flex',
     flexDirection: 'column',
     justifyContent: 'space-between',
-    width: '68%'
+    width: '70%'
   },
   contentHead: {
     color: '#FFFFFF',
@@ -39,6 +39,7 @@ const useStyles = makeStyles(theme => ({
     color: '#FFFFFF',
     fontSize: '16px',
     fontFamily: 'Nunito',
+    paddingBlock: '5px',
     [theme.breakpoints.down('sm')]: {
       fontSize: '15px'
     }
@@ -74,7 +75,7 @@ export const DataCard = (props) => {
           <Typography className={classes.content}>{props.no_telpon}</Typography>
         </div>
         <div className={classes.right}>
-          <IconButton className={classes.iconButton}>
+          <IconButton className={classes.iconButton} onClick={props.onClick}>
             <MapOutlinedIcon className={classes.icon}/>
           </IconButton>
           <Typography className={classes.content}>Arahkan</Typography>

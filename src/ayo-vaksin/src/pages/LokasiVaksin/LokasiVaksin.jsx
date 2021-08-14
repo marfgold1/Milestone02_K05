@@ -1,9 +1,9 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { makeStyles, Typography } from '@material-ui/core'
 
 import { DataCard } from './DataCard/DataCard'
 
-import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet'
+import { MapContainer, TileLayer, Marker, Popup, useMap } from 'react-leaflet'
 
 const useStyles = makeStyles(theme => ({
   lokasiVaksin: {
@@ -78,34 +78,45 @@ const useStyles = makeStyles(theme => ({
 const dataLokasiVaksin = [
   {
     id: 1,
-    nama_lokasi: 'RUMAH SAKIT A',
-    alamat: 'Jl. lorem',
+    nama_lokasi: 'STEI',
+    alamat: 'Labtek VIII/Gedung Achmad Bakrie, Jl. II, Lebak Siliwangi, Coblong, Bandung City, West Java 40132',
     no_telpon: '08441973813',
+    posisi: [-6.89060, 107.61103]
   },
   {
     id: 2,
-    nama_lokasi: 'RUMAH SAKIT B',
-    alamat: 'Jl. Ipsum',
+    nama_lokasi: 'PERPUSTAKAAN ITB',
+    alamat: 'Jalan V Kawasan ITB Kampus Ganesa, Jl. Ganeca No.10, Lb. Siliwangi, Kecamatan Coblong, Kota Bandung, Jawa Barat 40132',
     no_telpon: '018471483321',
+    posisi: [-6.88788, 107.61071]
   },
   {
     id: 3,
-    nama_lokasi: 'RUMAH SAKIT C',
-    alamat: 'Jl. dolor sit',
+    nama_lokasi: 'SBM ITB',
+    alamat: 'Jl. Ganesa No.10, Lb. Siliwangi, Kecamatan Coblong, Kota Bandung, Jawa Barat 40132',
     no_telpon: '4385734501234',
+    posisi: [-6.88800, 107.60923]
   },
   {
     id: 4,
-    nama_lokasi: 'RUMAH SAKIT D',
-    alamat: 'Jl. lorem ipsum dolor sit amet',
+    nama_lokasi: 'SABUGA CONVENTION HALL',
+    alamat: 'Jl. Tamansari No.73, Lb. Siliwangi, Kecamatan Coblong, Kota Bandung, Jawa Barat 40132',
     no_telpon: '981479057348',
+    posisi: [-6.88619, 107.60785]
   },
 ]
+
+const ChangeView = ({center, zoom}) => {
+  const map = useMap();
+  map.setView(center, zoom);
+  return null;
+}
 
 export const LokasiVaksin = () => {
   const classes = useStyles();
 
-  const position = [51.505, -0.09]
+  const [position, setPosition] = useState([-6.89145, 107.61061])
+  const [namaLokasi, setNamaLokasi] = useState('ITB')
 
   return (
     <div className={classes.lokasiVaksin}>
@@ -113,14 +124,15 @@ export const LokasiVaksin = () => {
       <Typography className={classes.subBody}>Lihat lokasi vaksin terdekat dari Anda disini</Typography>
       <div className={classes.contentWrapper}>
         <div className={classes.left}>
-          <MapContainer center={position} zoom={13} scrollWheelZoom={false} className={classes.mapContent}>
+          <MapContainer center={position} zoom={16} scrollWheelZoom={true} className={classes.mapContent}>
+            <ChangeView center={position} zoom={17}/>
             <TileLayer
               attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
               url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
             />
             <Marker position={position}>
               <Popup>
-                Hello guys
+                {namaLokasi}
               </Popup>
             </Marker>
           </MapContainer>
@@ -132,6 +144,10 @@ export const LokasiVaksin = () => {
               nama_lokasi={data.nama_lokasi}
               alamat={data.alamat}
               no_telpon={data.no_telpon}
+              onClick={() => {
+                setPosition(data.posisi);
+                setNamaLokasi(data.nama_lokasi);
+              }}
             />
           ))}
         </div>
