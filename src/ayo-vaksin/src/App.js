@@ -1,4 +1,5 @@
-import { CssBaseline } from "@material-ui/core";
+import { ThemeProvider, CssBaseline } from "@material-ui/core";
+import { theme } from "./theme";
 import Homepage from "./pages/Homepage";
 import Navbar from "./components/Navbar";
 import { LokasiVaksin } from "./pages/LokasiVaksin/LokasiVaksin";
@@ -7,7 +8,7 @@ import Footer from "./components/Footer";
 
 function App() {
   return (
-    <>
+    <ThemeProvider theme={theme}>
       <CssBaseline>
         <Navbar />
         <Homepage />
@@ -15,7 +16,7 @@ function App() {
         <LokasiVaksin />
         <Footer />
       </CssBaseline>
-    </>
+    </ThemeProvider>
   );
 }
 

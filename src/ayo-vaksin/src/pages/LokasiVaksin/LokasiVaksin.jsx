@@ -18,7 +18,6 @@ const useStyles = makeStyles(theme => ({
   title: {
     color: '#FFFFFF',
     textAlign: 'center',
-    fontFamily: 'Nunito',
     fontWeight: '600',
     [theme.breakpoints.down('sm')]: {
       fontSize: '3em'
@@ -29,7 +28,6 @@ const useStyles = makeStyles(theme => ({
     textAlign: 'center',
     paddingBlock: '1em',
     paddingBottom: '2em',
-    fontFamily: 'Nunito',
     [theme.breakpoints.down('sm')]: {
       fontSize: '1em',
       paddingTop: '.5em'
