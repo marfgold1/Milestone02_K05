@@ -1,7 +1,8 @@
-import { useState } from 'react'
 import { makeStyles } from '@material-ui/core/styles'
-import { AppBar, Button, Drawer, Hidden, IconButton, List, ListItem, ListItemText, Toolbar, Typography } from '@material-ui/core'
-import MenuIcon from '@material-ui/icons/Menu'
+import { AppBar, Button, Hidden, Toolbar, Typography } from '@material-ui/core'
+import { NavDrawer } from './NavDrawer'
+
+import Icon from '../images/icon.png'
 
 const links = [
   { label: 'Tentang' },
@@ -11,52 +12,47 @@ const links = [
 ]
 
 const useStyles = makeStyles((theme) => ({
+  icon: {
+    height: '30px',
+    marginRight: '20px',
+    [theme.breakpoints.down('sm')]: {
+      marginRight: '10px',
+    }
+  },
   title: {
     flexGrow: 1,
+    fontWeight: 700,
+  },
+  navRow: {
+    display: 'flex',
+    gap: '20px',
+  },
+  rowButton: {
+    fontSize: '16px',
+    fontWeight: 700,
+    textTransform: 'none',
   },
 }))
 
-const NavDrawer = function () {
-  const [anchorEl, setAnchorEl] = useState(null)
-  const handleClick = (event) => {
-    setAnchorEl(event.currentTarget)
-  }
-  const handleClose = () => {
-    setAnchorEl(null)
-  }
-
-  return (
-    <>
-      <IconButton onClick={handleClick}>
-        <MenuIcon />
-      </IconButton>
-      <Drawer anchor="top" anchorEl={anchorEl} open={Boolean(anchorEl)} onClose={handleClose}>
-        <List>
-          {links.map((link) => (
-            <ListItem><ListItemText primary={link.label} /></ListItem>
-          ))}
-        </List>
-      </Drawer>
-    </>
-  )
-}
-
 export const Navbar = function () {
-  const navRow = links.map((link) => (
-    <Button color="inherit">{link.label}</Button>
-  ))
-
   const classes = useStyles()
+
+  const navRow = links.map((link) => (
+    <Button color="inherit" className={classes.rowButton}>{link.label}</Button>
+  ))
 
   return (
     <AppBar position="sticky">
       <Toolbar>
+        <img src={Icon} className={classes.icon} alt="Syringe Icon" />
         <Typography variant="h6" className={classes.title}>
           Ayo Vaksin
         </Typography>
-        <Hidden smDown>{navRow}</Hidden>
+        <Hidden smDown>
+          <div className={classes.navRow}>{navRow}</div>
+        </Hidden>
         <Hidden mdUp>
-          <NavDrawer></NavDrawer>
+          <NavDrawer links={links}></NavDrawer>
         </Hidden>
       </Toolbar>
     </AppBar>
