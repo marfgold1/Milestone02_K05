@@ -5,8 +5,7 @@ import Icon from '../images/icon.png';
 
 const useStyles = makeStyles((theme) => ({
   wrapper: {
-    height: '100%',
-    flexGrow: 1,
+    minHeight: '100vh',
     backgroundColor: '#181829',
     color: '#FFFFFF',
     padding: '0 7em',
