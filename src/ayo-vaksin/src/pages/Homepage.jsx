@@ -63,8 +63,10 @@ const useStyles = makeStyles((theme) => ({
   },
   infoBoxNumber: {
     ...theme.typography.h5,
+    fontWeight: 900,
     [theme.breakpoints.up('md')]: {
       ...theme.typography.h4,
+      fontWeight: 900,
     },
   }
 }))
