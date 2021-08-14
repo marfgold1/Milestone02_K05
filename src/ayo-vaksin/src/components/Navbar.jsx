@@ -1,6 +1,6 @@
 import { useState } from 'react'
-import { makeStyles } from '@material-ui/core/styles';
-import { AppBar, Button, Drawer, Hidden, IconButton, List, ListItem, ListItemText, Toolbar, Typography } from '@material-ui/core';
+import { makeStyles } from '@material-ui/core/styles'
+import { AppBar, Button, Drawer, Hidden, IconButton, List, ListItem, ListItemText, Toolbar, Typography } from '@material-ui/core'
 import MenuIcon from '@material-ui/icons/Menu'
 
 const links = [
@@ -16,8 +16,8 @@ const useStyles = makeStyles((theme) => ({
   },
 }))
 
-function NavDrawer() {
-  const [anchorEl, setAnchorEl] = useState(null);
+const NavDrawer = function () {
+  const [anchorEl, setAnchorEl] = useState(null)
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget)
   }
@@ -41,7 +41,7 @@ function NavDrawer() {
   )
 }
 
-function Navbar() {
+export const Navbar = function () {
   const navRow = links.map((link) => (
     <Button color="inherit">{link.label}</Button>
   ))
@@ -62,5 +62,3 @@ function Navbar() {
     </AppBar>
   )
 }
-
-export default Navbar;

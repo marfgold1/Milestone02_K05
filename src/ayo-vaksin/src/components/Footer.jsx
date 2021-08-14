@@ -1,7 +1,7 @@
-import { makeStyles } from '@material-ui/core/styles';
-import { Box, Grid, Hidden, Typography } from '@material-ui/core';
+import { makeStyles } from '@material-ui/core/styles'
+import { Box, Grid, Hidden, Typography } from '@material-ui/core'
 
-import Call from '../images/Call.svg';
+import Call from '../images/Call.svg'
 
 const useStyles = makeStyles((theme) => ({
   wrapper: {
@@ -32,18 +32,18 @@ const useStyles = makeStyles((theme) => ({
       justifyContent: 'flex-end',
     }
   }
-}));
+}))
 
 const links = [
   { label: 'Satuan Tugas Penanganan COVID-19', href: 'https://covid19.go.id/' },
   { label: 'PeduliLindungi', href: 'https://pedulilindungi.id/' },
   { label: 'Linktree KPCPEN', href: 'https://linktr.ee/covid19.go.id' },
   { label: 'Alodokter', href: 'https://www.alodokter.com/informasi-berbagai-vaksin-covid-19-di-indonesia' },
-];
+]
 
-function Footer() {
-  const classes = useStyles();
-  const spacing = 2;
+export const Footer = function () {
+  const classes = useStyles()
+  const spacing = 2
 
   return (
     <Box padding={`${spacing * 4}px`}>
@@ -88,7 +88,5 @@ function Footer() {
         </Grid>
       </Grid>
     </Box>
-  );
+  )
 }
-
-export default Footer;

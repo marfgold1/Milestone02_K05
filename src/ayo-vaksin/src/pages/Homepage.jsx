@@ -1,7 +1,7 @@
-import { makeStyles } from '@material-ui/core/styles';
-import { Grid, Typography } from '@material-ui/core';
+import { makeStyles } from '@material-ui/core/styles'
+import { Grid, Typography } from '@material-ui/core'
 
-import Icon from '../images/icon.png';
+import Icon from '../images/icon.png'
 
 const useStyles = makeStyles((theme) => ({
   wrapper: {
@@ -67,17 +67,17 @@ const useStyles = makeStyles((theme) => ({
       ...theme.typography.h4,
     },
   }
-}));
+}))
 
 const formatNumber = (num) => new Intl.NumberFormat('en-ID', { maximumSignificantDigits: 3 }).format(num)
 
-function Homepage() {
-  const classes = useStyles();
+export const Homepage = function () {
+  const classes = useStyles()
 
   const vaxData = [
     { number: 47226514, addition: 420521 },
     { number: 20534823, addition: 388402 },
-  ];
+  ]
 
   return (
     <Grid container wrap="wrap-reverse" justifyContent="center" alignItems="center" alignContent="center" className={classes.wrapper}>
@@ -110,7 +110,5 @@ function Homepage() {
           <img src={Icon} className={classes.icon} alt="Syringe Icon" />
         </Grid>
     </Grid>
-  );
+  )
 }
-
-export default Homepage;
