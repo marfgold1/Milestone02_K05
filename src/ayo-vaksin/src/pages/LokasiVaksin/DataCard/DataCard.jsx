@@ -12,9 +12,13 @@ const useStyles = makeStyles(theme => ({
     borderRadius: '10px',
     padding: '1.5em 2em',
     [theme.breakpoints.down('sm')]: {
-      width: '23em',
-      padding: '1.5em 1em'
-    }
+      width: '85vw',
+      padding: '1.5em 1em',
+    },
+    [theme.breakpoints.between('sm','md')]: {
+      width: '70vw',
+      padding: '1.5em 2em',
+    },
   },
   cardWrap: {
     display: 'flex',

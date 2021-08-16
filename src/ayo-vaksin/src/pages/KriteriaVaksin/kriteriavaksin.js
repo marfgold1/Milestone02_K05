@@ -1,6 +1,5 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
-import Grid from '@material-ui/core/Grid';
 
 const useStyles = makeStyles(theme => ({
     kriteriaVaksin: {
@@ -9,17 +8,28 @@ const useStyles = makeStyles(theme => ({
       width: '100%',
       padding: '5em 8em',
       [theme.breakpoints.down('sm')]: {
-        padding: '5em 3em'
+        padding: '3em 3em'
       }
+    },
+    contentWrap: {
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'space-between',
+        [theme.breakpoints.down('sm')]: {
+            flexDirection: 'column-reverse'
+        }
     },
     body: {
         color: '#222232',
         fontSize: '1.5em',
         lineHeight: '1.5em',
         fontFamily: 'Nunito',
+        display: 'flex',
+        justifyContent: 'center',
+        flexDirection: 'column',
+        gap: '10px',
         [theme.breakpoints.down('sm')]: {
           fontSize: '1.1em',
-          padding: '.5em 2.5em',
           lineHeight: '1.4em'
         }
     },
@@ -29,7 +39,7 @@ const useStyles = makeStyles(theme => ({
         fontFamily: 'Nunito',
         fontWeight: '600',
         [theme.breakpoints.down('sm')]: {
-          fontSize: '2.6em',
+          fontSize: '2.3em',
           textAlign: 'center'
         }
     },
@@ -37,11 +47,18 @@ const useStyles = makeStyles(theme => ({
         paddingLeft : '1.8em'
     },
     gambar: {
+        alignItems: 'center',
         [theme.breakpoints.down('sm')]: {
           display:'flex',
           alignItems : 'center'
         }
     },
+    image: {
+        width: '21em',
+        [theme.breakpoints.down('sm')]: {
+            width: '8em'
+        }
+    }
 }))
 
 export const Kriteria = () => {
@@ -49,9 +66,8 @@ export const Kriteria = () => {
     return(
         <div className={classes.kriteriaVaksin}>
         <p className={classes.title}>Kriteria Vaksinasi</p>
-        <br />
-        <Grid container direction="row" wrap="wrap-reverse">
-            <Grid className={classes.body} item xs={12} md={8}>
+        <div className={classes.contentWrap}>
+            <div className={classes.body}>
             <p>
                 <b>Beberapa </b> kondisi dimana individu <b> tak boleh</b> untuk divaksinasi adalah :
             </p>
@@ -74,11 +90,11 @@ export const Kriteria = () => {
                 <a href="https://covid19.go.id/tanya-jawab?search=kriteria"> Kriteria Vaksin
                 </a>
             </p>
-            </Grid>
-            <Grid item className={classes.gambar} xs={12} md={4}>
-                <img src={require('../../images/kriteriaVaksin.png').default} width={335} height={335} alt='warning'/>
-            </Grid>
-        </Grid>
+            </div>
+            <div item className={classes.gambar}>
+                <img src={require('../../images/kriteriaVaksin.png').default} className={classes.image} alt='warning'/>
+            </div>
+        </div>
         </div>
 
         )
