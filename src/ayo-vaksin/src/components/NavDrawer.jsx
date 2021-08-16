@@ -28,7 +28,7 @@ export const NavDrawer = function ({ links }) {
       <Drawer anchor="top" anchorEl={anchorEl} open={Boolean(anchorEl)} onClose={handleClose}>
         <List>
           {links.map((link) => (
-            <ListItem button component="a" href="#" onClick={handleClose}>
+            <ListItem button component="a" href={'#' + link.key} onClick={handleClose}>
               <ListItemText primary={link.label} disableTypography className={classes.itemText} />
             </ListItem>
           ))}
