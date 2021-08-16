@@ -1,7 +1,7 @@
 FROM node:10-alpine as build
 RUN mkdir /app
 WORKDIR /app
-COPY package.json yarn.lock /app
+COPY package.json yarn.lock /app/
 RUN yarn install --pure-lockfile
 COPY . /app
 RUN yarn build
