@@ -124,7 +124,7 @@ export const LokasiVaksin = () => {
       <Typography className={classes.subBody}>Lihat lokasi vaksin terdekat dari Anda disini</Typography>
       <div className={classes.contentWrapper}>
         <div className={classes.left}>
-          <MapContainer center={position} zoom={16} scrollWheelZoom={true} className={classes.mapContent}>
+          <MapContainer center={position} zoom={16} scrollWheelZoom={false} className={classes.mapContent}>
             <ChangeView center={position} zoom={17}/>
             <TileLayer
               attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
