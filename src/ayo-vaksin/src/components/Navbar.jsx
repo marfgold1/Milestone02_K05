@@ -12,6 +12,9 @@ const links = [
 ]
 
 const useStyles = makeStyles((theme) => ({
+  toolbar: {
+    backgroundColor: '#246BFD',
+  },
   icon: {
     height: '30px',
     marginRight: '20px',
@@ -43,7 +46,7 @@ export const Navbar = function () {
 
   return (
     <AppBar position="sticky">
-      <Toolbar>
+      <Toolbar className={classes.toolbar}>
         <img src={Icon} className={classes.icon} alt="Syringe Icon" />
         <Typography variant="h6" className={classes.title}>
           Ayo Vaksin
