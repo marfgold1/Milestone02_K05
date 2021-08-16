@@ -9,16 +9,24 @@ import { TanyaJawab } from "./pages/TanyaJawab/tanyajawab";
 import { Footer } from './components/Footer';
 import './App.css'
 
+const pages = [
+  { key: 'home', component: Homepage },
+  { key: 'tentang', component: TentangVaksin, label: 'Tentang' },
+  { key: 'kriteria', component: Kriteria, label: 'Kriteria' },
+  { key: 'lokasi', component: LokasiVaksin, label: 'Lokasi' },
+  { key: 'qna', component: TanyaJawab, label: 'Tanya Jawab' },
+]
+
 function App() {
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline>
-        <Navbar />
-        <Homepage />
-        <TentangVaksin />
-        <Kriteria/>
-        <LokasiVaksin />
-        <TanyaJawab />
+        <Navbar links={pages.slice(1)} />
+        {pages.map((page) => (
+          <div key={page.key} id={page.key}>
+            <page.component />
+          </div>
+        ))}
         <Footer />
       </CssBaseline>
     </ThemeProvider>
