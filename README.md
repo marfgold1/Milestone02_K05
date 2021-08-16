@@ -18,13 +18,20 @@ Sistem Sentralisasi Informasi Melalui Website sebagai Solusi atas Kurangnya Eduk
 # Daftar Tugas
 1. [3 orang] Concept and Styling (HTML+CSS)
     1. Vincentius Verel Siedharta	16520199
+    Jobdesc : Kriteria Vaksin, tanya jawab vaksin
     2. Haidar Ihzaulhaq			    16520489
+    Jobdesc : Navbar, Footer, HomePage
     3. Bariza Haqi				    16520211
+    Jobdesc : Lokasi vaksin
     4. Fikri Muhammad Fahreza 		16520018
+    Jobdesc : Tentang vaksin
 2. [3 orang] Implementation (React)
     1. Jason Kanggara 			    16520214
+    Jobdesc : Tentang vaksin, lokasi vaksin
     2. Hilya Fadhilah Imania 		16520488
+    Jobdesc : Kriteria, Tanya Jawab
     3. Monica Adelia				16520321
+    Jobdesc : Navbar, Footer, home page 
 3. [1 orang] Logic (fetching data, nembak api, biasa pake JS)
     1. Amar Fadil	                16520008
 4. [1 orang] Devops (docker, if apply. CI/CD)
