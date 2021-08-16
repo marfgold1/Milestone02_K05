@@ -5,7 +5,7 @@ import { Navbar } from './components/Navbar';
 import { LokasiVaksin } from './pages/LokasiVaksin/LokasiVaksin';
 import { TentangVaksin } from './pages/TentangVaksin/TentangVaksin';
 import { Kriteria } from "./pages/KriteriaVaksin/kriteriavaksin";
-import { TanyaJawab } from "./pages/TanyaJawab/TanyaJawab";
+import { TanyaJawab } from "./pages/TanyaJawab/tanyajawab";
 import { Footer } from './components/Footer';
 import './App.css'
 

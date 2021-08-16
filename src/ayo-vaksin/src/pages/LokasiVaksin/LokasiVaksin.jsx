@@ -36,21 +36,21 @@ const useStyles = makeStyles(theme => ({
   mapContent: {
     width: '53em',
     height: '42em',
-    [theme.breakpoints.down('sm')]: {
-      width: '85%',
+    [theme.breakpoints.down('md')]: {
+      width: '80%',
       height: '40em',
-    }
+    },
   },
   left: {
-    [theme.breakpoints.down('sm')]: {
+    [theme.breakpoints.down('md')]: {
       display: 'flex',
       justifyContent: 'center'
     }
   },
   contentWrapper: {
     display: 'flex',
-    gap: '40px',
-    [theme.breakpoints.down('sm')]: {
+    gap: '30px',
+    [theme.breakpoints.down('md')]: {
       flexDirection: 'column',
       gap: '25px'
     }
@@ -61,9 +61,9 @@ const useStyles = makeStyles(theme => ({
     display: 'grid',
     gridTemplateColumns: 'auto',
     gap: '13px',
-    paddingRight: '20px',
+    paddingRight: '30px',
     overflowX: 'hidden',
-    [theme.breakpoints.down('sm')]: {
+    [theme.breakpoints.down('md')]: {
       padding: '0',
       justifyContent: 'center',
       '&::-webkit-scrollbar': {

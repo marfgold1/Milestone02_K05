@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Paper from '@material-ui/core/Paper';
 import InputBase from '@material-ui/core/InputBase';
@@ -8,11 +8,14 @@ import SearchIcon from '@material-ui/icons/Search';
 const useStyles = makeStyles(theme => ({
     tanyajawab: {
       backgroundColor:'#181829',
-      height: '407px',
+      height: '100%',
       width: '100%',
       padding: '8em 8em',
       [theme.breakpoints.down('sm')]: {
-        padding: '5em 3em'
+        padding: '3em 3em',
+        display: 'flex',
+        flexDirection: 'column',
+        alignItems: 'center'
       }
     },
     title: {
@@ -21,7 +24,7 @@ const useStyles = makeStyles(theme => ({
         fontFamily: 'Nunito',
         fontWeight: '600',
         [theme.breakpoints.down('sm')]: {
-          fontSize: '2.6em',
+          fontSize: '2em',
           textAlign: 'Center'
         }
     },
@@ -29,13 +32,8 @@ const useStyles = makeStyles(theme => ({
       padding: '0px 0px',
       display: 'flex',
       alignItems: 'center',
-      marginLeft: theme.spacing("147px"),
-      marginRight: theme.spacing("147px"),
-      marginTop: 21,
-      [theme.breakpoints.down('sm')]: {
-        width: 327,
-        height: 36,
-      }
+      marginBlock: '2em',
+      width: '100%'
     },
     input: {
       marginLeft: theme.spacing(1),
@@ -45,7 +43,13 @@ const useStyles = makeStyles(theme => ({
       padding: 10,
       borderRadius : '0px',
       backgroundColor: '#246BFD',
+      [theme.breakpoints.down('sm')]: {
+        padding: 5
+      }
     },
+    icon: {
+      color: '#FFFFFF'
+    }
     
 }))
 
@@ -61,7 +65,7 @@ export const TanyaJawab = () => {
                   inputProps={{ 'aria-label': 'search google maps' }}
                 />
                 <IconButton type="submit" className={classes.iconButton} aria-label="search">
-                  <SearchIcon />
+                  <SearchIcon className={classes.icon} />
                 </IconButton>
               </Paper>
         </div>
