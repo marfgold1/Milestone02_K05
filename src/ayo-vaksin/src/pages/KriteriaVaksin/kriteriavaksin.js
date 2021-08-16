@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
 
@@ -76,7 +76,7 @@ export const Kriteria = () => {
             </p>
             </Grid>
             <Grid item className={classes.gambar} xs={12} md={4}>
-                <img src={require('../../images/kriteriaVaksin.png').default} width={335} height={335}/>
+                <img src={require('../../images/kriteriaVaksin.png').default} width={335} height={335} alt='warning'/>
             </Grid>
         </Grid>
         </div>
