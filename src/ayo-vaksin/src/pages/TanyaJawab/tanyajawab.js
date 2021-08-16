@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Paper from '@material-ui/core/Paper';
 import InputBase from '@material-ui/core/InputBase';
@@ -55,16 +55,26 @@ const useStyles = makeStyles(theme => ({
 
 export const TanyaJawab = () => {
     const classes=useStyles()
+    const [val, setVal] = useState('');
+    const changeVal = (ev) => {
+      setVal(ev.target.value);
+    }
+    const search = (ev) => {
+      ev.preventDefault()
+      window.open(`https://covid19.go.id/tanya-jawab?search=${val}`, "_blank")
+    }
     return(
         <div className={classes.tanyajawab}>
             <p className={classes.title}>Tanya Jawab Vaksin</p>
               <Paper component="form" className={classes.root}>
                 <InputBase
                   className={classes.input}
-                  placeholder="Pencarian........."
+                  placeholder="Pencarian"
                   inputProps={{ 'aria-label': 'search google maps' }}
+                  value={val}
+                  onChange={changeVal}
                 />
-                <IconButton type="submit" className={classes.iconButton} aria-label="search">
+                <IconButton type="submit" className={classes.iconButton} onClick={search} aria-label="search">
                   <SearchIcon className={classes.icon} />
                 </IconButton>
               </Paper>

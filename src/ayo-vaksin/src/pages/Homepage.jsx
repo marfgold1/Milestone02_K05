@@ -1,3 +1,4 @@
+import React, { useState, useEffect } from 'react';
 import { makeStyles } from '@material-ui/core/styles'
 import { Grid, Typography } from '@material-ui/core'
 
@@ -71,15 +72,27 @@ const useStyles = makeStyles((theme) => ({
   }
 }))
 
-const formatNumber = (num) => new Intl.NumberFormat('en-ID', { maximumSignificantDigits: 3 }).format(num)
+const formatNumber = (num) => new Intl.NumberFormat('en-ID', { maximumSignificantDigits: 20 }).format(num)
 
 export const Homepage = function () {
   const classes = useStyles()
 
-  const vaxData = [
-    { number: 47226514, addition: 420521 },
-    { number: 20534823, addition: 388402 },
-  ]
+  const [vaxData, setVaxData] = useState([
+    { number: 0, addition: 0 },
+    { number: 0, addition: 0 },
+  ])
+
+  useEffect(() => {
+    fetch('https://thingproxy.freeboard.io/fetch/https://data.covid19.go.id/public/api/pemeriksaan-vaksinasi.json')
+    .then((resp) => resp.json())
+    .then((data) => {
+      const vax = data.vaksinasi;
+      setVaxData([
+        { number: vax.total.jumlah_vaksinasi_1, addition: vax.penambahan.jumlah_vaksinasi_1 },
+        { number: vax.total.jumlah_vaksinasi_2, addition: vax.penambahan.jumlah_vaksinasi_2 },
+      ]);
+    })
+  }, [])
 
   return (
     <Grid container wrap="wrap-reverse" justifyContent="center" alignItems="center" alignContent="center" className={classes.wrapper}>
@@ -95,7 +108,7 @@ export const Homepage = function () {
           <Grid item>
             <Grid container spacing={2}>
               {vaxData.map((data, i) => (
-                <Grid item xs={12} md={6}>
+                <Grid item xs={12} md={6} key={i}>
                   <div className={classes.infoBox}>
                     <div>Vaksinasi ke-{i+1}</div>
                     <div className={classes.infoBoxNumber}>

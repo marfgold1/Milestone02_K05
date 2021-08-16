@@ -125,8 +125,8 @@ export const LokasiVaksin = () => {
           <MapContainer center={position} zoom={16} scrollWheelZoom={false} className={classes.mapContent}>
             <ChangeView center={position} zoom={17}/>
             <TileLayer
-              attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
-              url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+              attribution='Ayo Vaksin'
+              url='https://cartodb-basemaps-{s}.global.ssl.fastly.net/light_all/{z}/{x}/{y}.png'
             />
             <Marker position={position}>
               <Popup>
