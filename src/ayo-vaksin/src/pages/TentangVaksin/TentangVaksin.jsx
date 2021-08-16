@@ -19,7 +19,6 @@ const useStyles = makeStyles(theme => ({
   title: {
     color: '#FFFFFF',
     fontSize: '3em',
-    fontFamily: 'Nunito',
     fontWeight: '600',
     [theme.breakpoints.down('sm')]: {
       fontSize: '2.6em',
@@ -35,7 +34,6 @@ const useStyles = makeStyles(theme => ({
     color: '#FFFFFF',
     fontSize: '1.5em',
     lineHeight: '1.5em',
-    fontFamily: 'Nunito',
     [theme.breakpoints.down('sm')]: {
       fontSize: '1.1em',
       padding: '.5em 2.5em',
@@ -46,7 +44,6 @@ const useStyles = makeStyles(theme => ({
     marginTop: '1em',
     color: '#FFFFFF',
     fontSize: '1.5em',
-    fontFamily: 'Nunito',
     [theme.breakpoints.down('sm')]: {
       paddingInline: '2em',
       fontSize: '1.3em'
@@ -54,7 +51,6 @@ const useStyles = makeStyles(theme => ({
   },
   link: {
     color: '#FFFFFF',
-    fontFamily: 'Nunito'
   }
 }))
 

@@ -18,7 +18,6 @@ const useStyles = makeStyles(theme => ({
   title: {
     color: '#FFFFFF',
     textAlign: 'center',
-    fontFamily: 'Nunito',
     fontWeight: '600',
     [theme.breakpoints.down('sm')]: {
       fontSize: '3em'
@@ -29,7 +28,6 @@ const useStyles = makeStyles(theme => ({
     textAlign: 'center',
     paddingBlock: '1em',
     paddingBottom: '2em',
-    fontFamily: 'Nunito',
     [theme.breakpoints.down('sm')]: {
       fontSize: '1em',
       paddingTop: '.5em'
@@ -124,7 +122,7 @@ export const LokasiVaksin = () => {
       <Typography className={classes.subBody}>Lihat lokasi vaksin terdekat dari Anda disini</Typography>
       <div className={classes.contentWrapper}>
         <div className={classes.left}>
-          <MapContainer center={position} zoom={16} scrollWheelZoom={true} className={classes.mapContent}>
+          <MapContainer center={position} zoom={16} scrollWheelZoom={false} className={classes.mapContent}>
             <ChangeView center={position} zoom={17}/>
             <TileLayer
               attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
