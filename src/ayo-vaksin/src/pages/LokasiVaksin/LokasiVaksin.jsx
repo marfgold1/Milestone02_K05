@@ -1,9 +1,9 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { makeStyles, Typography } from '@material-ui/core'
 
 import { DataCard } from './DataCard/DataCard'
 
-import { MapContainer, TileLayer, Marker, Popup, useMap } from 'react-leaflet'
+import { MapContainer, TileLayer, Marker, Popup, useMap, Circle } from 'react-leaflet'
 
 const useStyles = makeStyles(theme => ({
   lokasiVaksin: {
@@ -113,8 +113,15 @@ const ChangeView = ({center, zoom}) => {
 export const LokasiVaksin = () => {
   const classes = useStyles();
 
-  const [position, setPosition] = useState([-6.89145, 107.61061])
-  const [namaLokasi, setNamaLokasi] = useState('ITB')
+  const [userPos, setUserPos] = useState([0, 0]);
+  const [position, setPosition] = useState([-6.89145, 107.61061]);
+  const [namaLokasi, setNamaLokasi] = useState('ITB');
+
+  useEffect(() => {
+    navigator.geolocation.getCurrentPosition((pos) => {
+      setUserPos([pos.coords.latitude, pos.coords.longitude]);
+    })
+  }, [])
 
   return (
     <div className={classes.lokasiVaksin}>
@@ -122,12 +129,13 @@ export const LokasiVaksin = () => {
       <Typography className={classes.subBody}>Lihat lokasi vaksin terdekat dari Anda disini</Typography>
       <div className={classes.contentWrapper}>
         <div className={classes.left}>
-          <MapContainer center={position} zoom={16} scrollWheelZoom={false} className={classes.mapContent}>
-            <ChangeView center={position} zoom={17}/>
+          <MapContainer center={userPos} zoom={16} scrollWheelZoom={false} className={classes.mapContent}>
+            <ChangeView center={userPos} zoom={17}/>
             <TileLayer
               attribution='Ayo Vaksin'
               url='https://cartodb-basemaps-{s}.global.ssl.fastly.net/light_all/{z}/{x}/{y}.png'
             />
+            <Circle center={userPos} radius={50} />
             <Marker position={position}>
               <Popup>
                 {namaLokasi}
